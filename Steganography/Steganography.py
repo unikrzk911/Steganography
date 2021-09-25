@@ -32,7 +32,7 @@ def encode():
     def encodee():
         response= messagebox.askyesno("pop up","do you want to encode?")
         if response==1:
-            stg.hide(fileOpen,entrysave.get()+'.jpg',entrysecmes.get())
+            stg.hide(fileOpen,entrySave.get()+'.jpg',entry.get())
             messagebox.showinfo("pop up", "message successfully encoded")
 
         else:
