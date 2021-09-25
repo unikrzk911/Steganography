@@ -3,6 +3,9 @@ from tkinter.filedialog import *
 from PIL import ImageTk, Image
 from stegano import exifHeader as stg
 from tkinter import messagebox
+import os
+from subprocess import Popen
+
 
 def encode():
     main.destroy()
@@ -38,12 +41,18 @@ def encode():
         else:
             messagebox.showwarning("pop up ", "Unsuccessful")
 
+    def back():
+        enc.destroy()
+        Popen('python Steganography.py')
 
     buttonSelect=Button(text="Select File", command=openFile)
     buttonSelect.place(relx=0.1,rely=0.3)
 
     buttonEncode=Button(text="Encode", command=encodee)
     buttonEncode.place(relx=0.5,rely=0.4)
+
+    Buttonback = Button(text="Back",command=back)
+    Buttonback.place(relx=0.7, rely=0.85, height=31, width=94)
 
 
 def decode():
@@ -63,12 +72,19 @@ def decode():
         label4=Label(text=message)
         label4.place(relx=0.3, rely=0.3)
 
+    def back():
+        dec.destroy()
+        Popen('python Steganography.py')
+
      
     buttonSelect=Button(text="Select File", command=openFile)
     buttonSelect.place(relx=0.1,rely=0.3)
 
     buttonDecode=Button(text="Decode", command=decodee)
     buttonDecode.place(relx=0.5,rely=0.4)
+
+    Buttonback = Button(text="Back",command=back)
+    Buttonback.place(relx=0.7, rely=0.85, height=31, width=94)
 
 
 main= Tk()
