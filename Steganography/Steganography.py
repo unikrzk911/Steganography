@@ -1,5 +1,8 @@
 from tkinter import *
-
+from tkinter.filedialog import *
+from PIL import ImageTk, Image
+from stegano import exifHeader as stg
+from tkinter import messagebox
 
 def encode():
     main.destroy()
@@ -19,10 +22,27 @@ def encode():
     entrySave=Entry()
     entrySave.place(relx=0.4,rely=0.2)
 
-    buttonSelect=Button(text="Select File")
+    def openFile():
+        global fileOpen
+        fileOpen= StringVar()
+        fileOpen= askopenfilename(initialdir="/Desktop", title="select file", filetypes=(("jpeg files","*jpg"),("all files","*.*")))
+        label3=Label(text=fileOpen)
+        label3.place(relx=0.3,rely=0.3)
+
+    def encodee():
+        response= messagebox.askyesno("pop up","do you want to encode?")
+        if response==1:
+            stg.hide(fileOpen,entrysave.get()+'.jpg',entrysecmes.get())
+            messagebox.showinfo("pop up", "message successfully encoded")
+
+        else:
+            messagebox.showwarning("pop up ", "Unsuccessful")
+
+
+    buttonSelect=Button(text="Select File", command=openFile)
     buttonSelect.place(relx=0.1,rely=0.3)
 
-    buttonEncode=Button(text="Encode")
+    buttonEncode=Button(text="Encode", command=encodee)
     buttonEncode.place(relx=0.5,rely=0.4)
 
 
@@ -32,10 +52,22 @@ def decode():
     dec.title("Decode")
     dec.geometry("500x400+300+150")
 
-    buttonSelect=Button(text="Select File")
+    
+    def openFile():
+        global fileOpen
+        fileOpen= StringVar()
+        fileOpen= askopenfilename(initialdir="/Desktop", title="select file", filetypes=(("jpeg files","*jpg"),("all files","*.*")))
+
+    def decodee():
+        message=stg.reveal(fileOpen)
+        label4=Label(text=message)
+        label4.place(relx=0.3, rely=0.3)
+
+     
+    buttonSelect=Button(text="Select File", command=openFile)
     buttonSelect.place(relx=0.1,rely=0.3)
 
-    buttonDecode=Button(text="Decode")
+    buttonDecode=Button(text="Decode", command=decodee)
     buttonDecode.place(relx=0.5,rely=0.4)
 
 
