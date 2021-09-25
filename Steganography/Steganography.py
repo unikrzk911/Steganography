@@ -19,7 +19,7 @@ def encode():
     entry=Entry()
     entry.place(relx=0.4,rely=0.1)
 
-    label2=Label(text="File")
+    label2=Label(text="Save file name as")
     label2.place(relx=0.1,rely=0.2,height=20,width=100)
 
     entrySave=Entry()
@@ -28,15 +28,15 @@ def encode():
     def openFile():
         global fileOpen
         fileOpen= StringVar()
-        fileOpen= askopenfilename(initialdir="/Desktop", title="select file", filetypes=(("jpeg files","*jpg"),("all files","*.*")))
+        fileOpen= askopenfilename(initialdir="/Desktop", title="Select file", filetypes=(("jpeg files","*jpg"),("all files","*.*")))
         label3=Label(text=fileOpen)
         label3.place(relx=0.3,rely=0.3)
 
     def encodee():
-        response= messagebox.askyesno("pop up","do you want to encode?")
+        response= messagebox.askyesno("pop up","Do you want to encode?")
         if response==1:
             stg.hide(fileOpen,entrySave.get()+'.jpg',entry.get())
-            messagebox.showinfo("pop up", "message successfully encoded")
+            messagebox.showinfo("pop up", "Message successfully encoded")
 
         else:
             messagebox.showwarning("pop up ", "Unsuccessful")
@@ -65,7 +65,7 @@ def decode():
     def openFile():
         global fileOpen
         fileOpen= StringVar()
-        fileOpen= askopenfilename(initialdir="/Desktop", title="select file", filetypes=(("jpeg files","*jpg"),("all files","*.*")))
+        fileOpen= askopenfilename(initialdir="/Desktop", title="Select file", filetypes=(("jpeg files","*jpg"),("all files","*.*")))
 
     def decodee():
         message=stg.reveal(fileOpen)
