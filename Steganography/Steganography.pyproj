@@ -23,9 +23,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="calculator.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Steganography.py" />
   </ItemGroup>
   <ItemGroup>
