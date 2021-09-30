@@ -92,10 +92,16 @@ main.title("Image Steganography")
 main.geometry("500x400+300+150")
 
 encodeButton=Button(text="Encode", command=encode)
-encodeButton.place(relx=0.3,rely=0.3,height=40, width=80)
+encodeButton.place(relx=0.45,rely=0.3,height=40, width=80)
 
 decodeButton=Button(text="Decode",command=decode)
-decodeButton.place(relx=0.5,rely=0.3,height=40, width=80)
+decodeButton.place(relx=0.45,rely=0.5,height=40, width=80)
+
+def exit():
+	main.destroy()
+
+closebutton=Button(text='EXIT',command=exit)
+closebutton.place(relx=0.45,rely=0.7,height=40, width=80)
 
 
 main.mainloop()
