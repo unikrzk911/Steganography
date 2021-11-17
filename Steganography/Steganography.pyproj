@@ -23,6 +23,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="decode.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="encode.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Steganography.py" />
   </ItemGroup>
   <ItemGroup>
