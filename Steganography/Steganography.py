@@ -26,7 +26,7 @@ def open_encode_window():
     # checking if the window is already open
     if not encode_opened:
         encode_window = Toplevel(window)
-        encode_window.title("Imgstego - Encode")
+        encode_window.title("ImgStego - Encode")
         encode_window.geometry('800x500')
         encode_window.resizable(False, False)
         encode_window.transient(window)
@@ -82,7 +82,7 @@ def open_encode_window():
 # method to save the encoded image file on a chosen destination
 def save_image(stego_image):
     # getting the path of the destination to save
-    save_path = filedialog.asksaveasfile(initialfile="Imgstego.png", mode="wb", defaultextension=".png",
+    save_path = filedialog.asksaveasfile(initialfile="ImgStego.png", mode="wb", defaultextension=".png",
                                          filetypes=(("Image File", "*.png"), ("All Files", "*.*")))
     # saving the image
     stego_image.save(save_path)
@@ -121,7 +121,7 @@ def open_decode_window():
     if not decode_opened:
         # Initializing new child window for decoding functions
         decode_window = Toplevel(window)
-        decode_window.title("Imgstego - Decode")
+        decode_window.title("ImgStego - Decode")
         decode_window.geometry('800x500')
         decode_window.resizable(False, False)
         decode_window.transient(window)
@@ -256,7 +256,7 @@ def close_window():
 
 # Initializing tkinter window
 window = Tk()
-window.title("Imgstego")
+window.title("ImgStego")
 window.geometry('800x500')
 window.resizable(False, False)
 if windows:
@@ -272,7 +272,7 @@ image_label = Label(window, image=logo, height=180, width=180)
 image_label.pack(pady=20)
 
 # Initializing label to display title label on the window
-title_label = Label(window, text="Imgstego")
+title_label = Label(window, text="ImgStego")
 title_label.pack()
 title_label.config(font=("Open Sans", 32))
 
