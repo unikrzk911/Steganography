@@ -250,6 +250,10 @@ def close_decode_window(decode_window):
     # Setting the value of global tracking variable to false to denote that window is closed
     decode_opened = False
 
+# Function to define actions to be performed when main window is tried to closed
+def close_window():
+    window.destroy()
+
 # Initializing tkinter window
 window = Tk()
 window.title("Imgstego")
@@ -264,7 +268,7 @@ logo = ImageTk.PhotoImage(logo)
 window.iconphoto(True, logo)
 
 # Initializing label to display image on the window
-image_label = Label(window, image=logo, height=150, width=150)
+image_label = Label(window, image=logo, height=180, width=180)
 image_label.pack(pady=20)
 
 # Initializing label to display title label on the window
@@ -283,6 +287,14 @@ decode_btn = Button(window, text="Decode", height=2, width=15, bg="#015952", fg=
                     command=open_decode_window)
 decode_btn.config(font=("Open Sans", 15, "bold"))
 decode_btn.pack(side=RIGHT, padx=50)
+
+# Initializing button for exit action
+exit_btn = Button(window, text="Exit", height=2, width=15, bg="#000000", fg="white", cursor="hand2", borderwidth=0,
+                  command=close_window)
+# Setting font configurations for the button - font family, font size and font weight
+exit_btn.config(font=("Open Sans", 15, "bold"))
+# Packing the button on the window
+exit_btn.pack(side=BOTTOM, pady=80)
 
 
 
