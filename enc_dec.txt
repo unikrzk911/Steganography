@@ -1,0 +1,114 @@
+from tkinter import *
+from tkinter.filedialog import *
+from PIL import ImageTk, Image
+from stegano import exifHeader as stg
+from tkinter import messagebox
+import os
+from subprocess import Popen
+
+
+def encode():
+    main.destroy()
+    enc = Tk()
+    enc.title("Encode")
+    enc.geometry("500x400+300+150")
+
+    label1 = Label(text="Secret message")
+    label1.place(relx=0.1, rely=0.1, height=20, width=100)
+
+    entry = Entry()
+    entry.place(relx=0.4, rely=0.1)
+
+
+    label2 = Label(text="Save file name as")
+    label2.place(relx=0.1, rely=0.2, height=20, width=100)
+
+    entrySave = Entry()
+    entrySave.place(relx=0.4, rely=0.2)
+
+    def openFile():
+        global fileOpen
+        fileOpen = StringVar()
+        fileOpen = askopenfilename(initialdir="/Desktop", title="Select file",
+                                   filetypes=(("jpeg files", "*jpg"), ("all files", "*.*")))
+        labelPath = Label(text=fileOpen)
+        labelPath.place(relx=0.3, rely=0.3)
+
+    def encodee():
+        response = messagebox.askyesno("pop up", "Do you want to encode?")
+        if response == 1:
+            encode.Encode(fileOpen, password, entry.get())
+            #stg.hide(fileOpen, entrySave.get() + '.jpg', entry.get())
+            messagebox.showinfo("pop up", "Message successfully encoded")
+
+        else:
+            messagebox.showwarning("pop up ", "Unsuccessful")
+
+    def back():
+        enc.destroy()
+        Popen('python Steganography.py')
+
+    buttonSelect = Button(text="Select File", command=openFile)
+    buttonSelect.place(relx=0.1, rely=0.3)
+
+    password= Entry()
+    password.place(relx=0.4,rely=0.5)
+
+    buttonEncode = Button(text="Encode", command=encodee)
+    buttonEncode.place(relx=0.5, rely=0.4)
+
+    Buttonback = Button(text="Back", command=back)
+    Buttonback.place(relx=0.7, rely=0.85, height=31, width=94)
+
+
+def decode():
+    main.destroy()
+    dec = Tk()
+    dec.title("Decode")
+    dec.geometry("500x400+300+150")
+
+    def openFile():
+        global fileOpen
+        fileOpen = StringVar()
+        fileOpen = askopenfilename(initialdir="/Desktop", title="Select file",
+                                   filetypes=(("jpeg files", "*jpg"), ("all files", "*.*")))
+        labelPath = Label(text=fileOpen)
+        labelPath.place(relx=0.3, rely=0.1)
+
+    def decodee():
+        message = stg.reveal(fileOpen)
+        label4 = Label(text=message)
+        label4.place(relx=0.3, rely=0.2)
+
+    def back():
+        dec.destroy()
+        Popen('python Steganography.py')
+
+    buttonSelect = Button(text="Select File", command=openFile)
+    buttonSelect.place(relx=0.1, rely=0.1)
+
+    buttonDecode = Button(text="Decode", command=decodee)
+    buttonDecode.place(relx=0.5, rely=0.5)
+
+    Buttonback = Button(text="Back", command=back)
+    Buttonback.place(relx=0.7, rely=0.85, height=31, width=94)
+
+
+def exit():
+    main.destroy()
+
+
+main = Tk()
+main.title("Image Steganography")
+main.geometry("500x400+300+150")
+
+encodeButton = Button(text="Encode", command=encode)
+encodeButton.place(relx=0.45, rely=0.3, height=40, width=80)
+
+decodeButton = Button(text="Decode", command=decode)
+decodeButton.place(relx=0.45, rely=0.5, height=40, width=80)
+
+closebutton = Button(text='EXIT', command=exit)
+closebutton.place(relx=0.45, rely=0.7, height=40, width=80)
+
+main.mainloop()
