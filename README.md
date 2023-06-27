@@ -17,11 +17,11 @@ In other words, steganography is more discreet than cryptography when we want to
 2. Create a python 3 virtualenv inside the repository, activate the environment and Install the project dependencies. (Second option)
 
    ```powershell copy
-       python -m venv venv
+    python -m venv venv
    ```
 
    ```powershell copy
-      ./venv/Scripts/Activate.ps1
+    ./venv/Scripts/Activate.ps1
    ```
 
    ```powershell copy
