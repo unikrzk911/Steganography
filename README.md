@@ -8,24 +8,30 @@ The advantage of steganography over cryptography alone is that the intended secr
 
 In other words, steganography is more discreet than cryptography when we want to send a secret information. On the other hand, the hidden message is easier to extract.
 
----
-
 ## Installation Instructions
 
 0. Make sure that you have `Python 3`, `python-3-devel`, `gcc`, `virtualenv`, and `pip` installed.
-1. Clone the repository
 
-   ```bash
-       $ git clone https://github.com/sahrohit/Steganography.git
-       $ cd Steganography
+1. Clone this repository
+
+2. Create a python 3 virtualenv inside the repository, activate the environment and Install the project dependencies. (Second option)
+
+   ```powershell copy
+       python -m venv venv
    ```
 
-2. Create a python 3 virtualenv, activate the environment and Install the project dependencies. (Second option)
+   ```powershell copy
+      ./venv/Scripts/Activate.ps1
+   ```
 
-   ```bash
-       $ python -m venv venv
-       $ ./venv/Scripts/Activate.ps1
-       $ py -m pip install -r requirements.txt
+   ```powershell copy
+    py -m pip install -r requirements.txt
+   ```
+
+3. Run the project
+
+   ```powershell copy
+    py main.py
    ```
 
 You have now successfully set up the project on your environment.
